@@ -1,23 +1,247 @@
-/* Define a fonte Inter para todo o corpo do documento */
+/* Estilos básicos para o corpo da página */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f3f4f6; /* Cor de fundo suave */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
-/* Estilos para o botão ativo da navegação principal */
-.nav-button.active {
-    background-color: #ef4444; /* red-500 */
-    color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
 }
-/* Estilos para o botão ativo da navegação interna (Comanda/Cardápio/Pedidos) */
-.sub-nav-button.active {
-    background-color: #22c55e; /* green-500 */
-    color: white;
-    box-shadow: 0 4px 6px -1-px rgba(0, 0, 0, 0.1), 0 2px 4px -1-px rgba(0, 0, 0, 0.06);
+
+header h1 {
+    margin: 0;
 }
-/* Estilo para o botão de Pedidos Finalizados quando ativo */
-.orders-nav-button.active {
-    background-color: #10b981; /* emerald-500 */
-    color: white;
-    box-shadow: 0 4px 6px -1-px rgba(0, 0, 0, 0.1), 0 2px 4px -1-px rgba(0, 0, 0, 0.06);
+
+/* Estilos para o container do ícone do carrinho */
+#cart-icon-container {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#cart-icon-container i {
+    position: relative;
+}
+
+/* Estilos para o contador de itens no carrinho */
+#cart-count {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+/* Estilos para o conteúdo principal */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Estilos para os títulos das secções */
+h2 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+
+/* Estilos para o container de cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Estilos para cada card de item do cardápio */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #007BFF;
+}
+
+.card p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.card .valor {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.2rem;
+    text-align: right;
+    margin-top: 10px;
+}
+
+/* Estilos para o botão de adicionar */
+.card .add-to-cart {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.card .add-to-cart:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para o modal */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escurecido */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cart-items-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-items-container li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-items-container li:last-child {
+    border-bottom: none;
+}
+
+/* NOVO: Estilos para as opções de frete */
+.frete-options {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.frete-options label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+/* NOVO: Estilos para o resumo do pedido no modal */
+.cart-summary {
+    margin-top: 20px;
+    border-top: 2px solid #333;
+    padding-top: 15px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.total-item {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Estilos para o formulário */
+.customer-info-container {
+    margin-top: 20px;
+}
+
+.customer-info-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.customer-info-container input,
+.customer-info-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+#checkout-button {
+    width: 100%;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#checkout-button:hover {
+    background-color: #218838;
 }

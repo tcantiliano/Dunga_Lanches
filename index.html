@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Dunga Lanches</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <h1>Cardápio Dunga Lanches</h1>
+        <div id="cart-icon-container">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="beirutes-section">
+            <h2>Beirutes</h2>
+            <div class="card-container" id="beirutes-container"></div>
+        </section>
+
+        <section id="porcoes-section">
+            <h2>Porções</h2>
+            <div class="card-container" id="porcoes-container"></div>
+        </section>
+
+        <section id="pizzas-section">
+            <h2>Pizzas</h2>
+            <div class="card-container" id="pizzas-container"></div>
+        </section>
+
+        <section id="lanches-section">
+            <h2>Lanches</h2>
+            <div class="card-container" id="lanches-container"></div>
+        </section>
+    </main>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="cart-header">
+                <h2>Seu Pedido</h2>
+            </div>
+            <div class="cart-items-container">
+                <ul id="cart-items">
+                    </ul>
+            </div>
+            
+            <div class="frete-options">
+                <h3>Opção de Entrega</h3>
+                <label>
+                    <input type="radio" name="frete-option" value="retirada" checked> Retirada no Local
+                </label>
+                <label>
+                    <input type="radio" name="frete-option" value="entrega"> Entrega
+                </label>
+            </div>
+            
+            <div id="frete-message"></div>
+
+            <div class="cart-summary">
+                <div class="summary-item">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal-value">R$ 0,00</span>
+                </div>
+                <div class="summary-item frete-item">
+                    <span>Frete:</span>
+                    <span id="frete-value">Grátis</span>
+                </div>
+                <div class="summary-item total-item">
+                    <strong>Total Geral:</strong>
+                    <span id="cart-total-value">R$ 0,00</span>
+                </div>
+            </div>
+
+            <div class="customer-info-container">
+                <h3>Dados para o Pedido</h3>
+                <form id="order-form">
+                    <label for="customer-name">Nome:</label>
+                    <input type="text" id="customer-name" name="customer-name" required>
+
+                    <label for="customer-address">Endereço:</label>
+                    <textarea id="customer-address" name="customer-address"></textarea>
+
+                    <button type="submit" id="checkout-button">Finalizar Pedido</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

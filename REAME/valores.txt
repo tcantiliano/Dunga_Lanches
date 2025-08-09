@@ -1,0 +1,190 @@
+[
+  {
+    "Beirutes": "Frango - mussarela, maionese, alface, tomate e orégano",
+    "Valor Grande": "R$ 54,90",
+    "Valor Pequena": "R$ 41,90"
+  },
+  {
+    "Beirutes": "Carne - mussarela, maionese, alface, tomate e orégano",
+    "Valor Grande": "R$ 68,90",
+    "Valor Pequena": "R$ 51,90"
+  },
+  {
+    "Beirutes": "Calabresa - mussarela, maionese, alface, tomate e orégano",
+    "Valor Grande": "R$ 64,90",
+    "Valor Pequena": "R$ 48,90"
+  },
+  {
+    "Beirutes": "Peito de Peru - mussarela, maionese, alface, tomate e orégano",
+    "Valor Grande": "R$ 65,90",
+    "Valor Pequena": "R$ 49,90"
+  },
+  {
+    "Beirutes": "Portuguesa - mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
+    "Valor Grande": "R$ 51,90",
+    "Valor Pequena": "R$ 39,90"
+  }
+]
+[
+  {
+    "Porcoes": "Frango a passarinho com fritas",
+    "Valor Normal": "R$ 54,90",
+    "Valor Meia": "R$ 34,90"
+  },
+  {
+    "Porcoes": "Frango a passarinho com fritas - Opcional: chedder e bacon",
+    "Valor Normal": "R$ 69,90",
+    "Valor Meia": "R$ 44,90"
+  },
+  {
+    "Porcoes": "Frango a passarinho com fritas e mandioca",
+    "Valor Normal": "R$ 67,90",
+    "Valor Meia": "R$ 39,90"
+  },
+  {
+    "Porcoes": "Frango a passarinho com fritas e mandioca - Opcional: chedder e bacon",
+    "Valor Normal": "R$ 81,90",
+    "Valor Meia": "R$ 49,90"
+  },
+  {
+    "Porcoes": "Carne seca acebolada com mandioca",
+    "Valor Normal": "R$ 67,90",
+    "Valor Meia": "Não tem meia"
+  },
+  {
+    "Porcoes": "Carne seca acebolada com mandioca e queiio coalho",
+    "Valor Normal": "R$ 84,90",
+    "Valor Meia": "Não tem meia"
+  },
+  {
+    "Porcoes": "Fritas",
+    "Valor Normal": "R$ 28,90",
+    "Valor Meia": "R$ 14,90"
+  },
+  {
+    "Porcoes": "Fritas com cheddar e bacon",
+    "Valor Normal": "R$ 38,90",
+    "Valor Meia": "R$ 21,90"
+  },
+  {
+    "Porcoes": "Isca de Peixe",
+    "Valor Normal": "R$ 54,90",
+    "Valor Meia": "Não tem meia"
+  }
+]
+[
+  {
+    "Pizzas": "Calabresa - com cebola",
+    "Valor Normal": "R$ 39.90"
+  },
+  {
+    "Pizzas": "Mussarela - oregano e azeitona",
+    "Valor Normal": "R$ 38,90"
+  },
+  {
+    "Pizzas": "Toscana - calabresa, cebola, mussarela e azeitona",
+    "Valor Normal": "R$ 46,90"
+  },
+  {
+    "Pizzas": "Brócolis - mussarela, alho e azeitona",
+    "Valor Normal": "R$ 41.90"
+  },
+  {
+    "Pizzas": "Palmito - mussarela, catupiry e azeitona",
+    "Valor Normal": "R$ 48,90"
+  },
+  {
+    "Pizzas": "Atum - cebola ou com mussarela, azeitona",
+    "Valor Normal": "R$ 49.90"
+  },
+  {
+    "Pizzas": "Bauru - tomate, mussarela e azeitona",
+    "Valor Normal": "R$ 41,90"
+  },
+  {
+    "Pizzas": "Escarola - bacon, mussarela e azeitona",
+    "Valor Normal": "R$ 41,90"
+  },
+  {
+    "Pizzas": "Bacon - com mussarela, azeitona",
+    "Valor Normal": "R$ 49.90"
+  },
+  {
+    "Pizzas": "Baiana - calabresa moída, pimenta, mussarela e azeitona",
+    "Valor Normal": "R$ 41,90"
+  },
+  {
+    "Pizzas": "Dois Queijos - mussarela, catupiry, tomate e azeitona",
+    "Valor Normal": "R$ 46,90"
+  },
+  {
+    "Pizzas": "Três Queijos - mussarela, provolone, parmesão e azeitona",
+    "Valor Normal": "R$ 50,90"
+  },
+  {
+    "Pizzas": "Quatro Queijos - mussarela, gorgonzola, provolone, parmesão e azeitona",
+    "Valor Normal": "R$ 51,90"
+  },
+  {
+    "Pizzas": "Napolitana - mussarela, tomate e azeitona",
+    "Valor Normal": "R$ 41,90"
+  },
+  {
+    "Pizzas": "Portuguesa - ovos, presunto, cebola, mussarela e azeitona",
+    "Valor Normal": "R$ 47,90"
+  },
+  {
+    "Pizzas": "Frango com Catupiry- frango ralado, catupiry, azeitona",
+    "Valor Normal": "R$ 47,90"
+  },
+  {
+    "Pizzas": "Lombo - cebola, mussarela ou catupiry, azeitona",
+    "Valor Normal": "R$ 50,90"
+  },
+  {
+    "Pizzas": "Carne seca - mussarela, azeitona",
+    "Valor Normal": "R$ 59.90"
+  },
+  {
+    "Pizzas": "Alho - mussarela, alho e azeitona",
+    "Valor Normal": "R$ 41.90"
+  }
+]
+[
+  {
+    "Lanches": "X-Frango Grelhado",
+    "Valor": "R$ 19,90"
+  },
+  {
+    "Lanches": "X-Peito de Peru",
+    "Valor": "R$ 20,90"
+  },
+  {
+    "Lanches": "X-Salada",
+    "Valor": "R$ 16,90"
+  },
+  {
+    "Lanches": "X-Bacon",
+    "Valor": "R$ 17,90"
+  },
+  {
+    "Lanches": "X-Contra File",
+    "Valor": "R$ 21,90"
+  },
+  {
+    "Lanches": "X-EGG",
+    "Valor": "R$ 17,90"
+  },
+  {
+    "Lanches": "X-Presunto",
+    "Valor": "R$ 18,90"
+  },
+  {
+    "Lanches": "Bauru",
+    "Valor": "R$ 14,90"
+  },
+  {
+    "Lanches": "Misto Quente",
+    "Valor": "R$ 12,90"
+  }
+]
