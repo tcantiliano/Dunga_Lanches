@@ -1,0 +1,23 @@
+/* Define a fonte Inter para todo o corpo do documento */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* Cor de fundo suave */
+}
+/* Estilos para o botão ativo da navegação principal */
+.nav-button.active {
+    background-color: #ef4444; /* red-500 */
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+/* Estilos para o botão ativo da navegação interna (Comanda/Cardápio/Pedidos) */
+.sub-nav-button.active {
+    background-color: #22c55e; /* green-500 */
+    color: white;
+    box-shadow: 0 4px 6px -1-px rgba(0, 0, 0, 0.1), 0 2px 4px -1-px rgba(0, 0, 0, 0.06);
+}
+/* Estilo para o botão de Pedidos Finalizados quando ativo */
+.orders-nav-button.active {
+    background-color: #10b981; /* emerald-500 */
+    color: white;
+    box-shadow: 0 4px 6px -1-px rgba(0, 0, 0, 0.1), 0 2px 4px -1-px rgba(0, 0, 0, 0.06);
+}
