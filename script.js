@@ -37,10 +37,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const freteOptions = document.querySelectorAll('input[name="frete-option"]');
     const customerAddressTextarea = document.getElementById('customer-address');
     const freteMessageDiv = document.getElementById('frete-message');
+    
+    const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+    const trocoField = document.getElementById('troco-field');
+    const trocoValueInput = document.getElementById('troco-value');
+    const cartItemsContainer = document.getElementById('cart-items');
 
     function parseValue(valueString) {
         const cleanValue = valueString.replace('R$', '').replace(',', '.').trim();
         return parseFloat(cleanValue) || 0;
+    }
+
+    // NOVO: Função para guardar o carrinho no localStorage
+    function saveCart() {
+        localStorage.setItem('dungaLanchesCart', JSON.stringify(cart));
+    }
+    
+    // NOVO: Função para carregar o carrinho do localStorage
+    function loadCart() {
+        const storedCart = localStorage.getItem('dungaLanchesCart');
+        return storedCart ? JSON.parse(storedCart) : [];
     }
 
     function createCard(item, category) {
@@ -69,8 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateCartDisplay() {
-        const cartItemsContainer = document.getElementById('cart-items');
-        
         cartItemsContainer.innerHTML = '';
         
         let subtotal = 0;
@@ -84,8 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const li = document.createElement('li');
                 li.innerHTML = `
-                    <span>${item.name} (x${item.quantity})</span>
-                    <span>R$ ${(valorNumerico * item.quantity).toFixed(2).replace('.', ',')}</span>
+                    <div class="item-info">
+                        <span>${item.name}</span>
+                        <span>R$ ${(valorNumerico * item.quantity).toFixed(2).replace('.', ',')}</span>
+                    </div>
+                    <div class="item-quantity-controls">
+                        <button class="decrease-quantity" data-item-name="${item.name}">-</button>
+                        <span class="item-quantity">${item.quantity}</span>
+                        <button class="increase-quantity" data-item-name="${item.name}">+</button>
+                        <button class="remove-item" data-item-name="${item.name}">&times;</button>
+                    </div>
                 `;
                 cartItemsContainer.appendChild(li);
             });
@@ -97,19 +119,18 @@ document.addEventListener('DOMContentLoaded', () => {
             freteMessageDiv.style.display = 'block';
             customerAddressTextarea.required = true;
             freteValue.textContent = 'A verificar...';
-            cartTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`; // Total inicial é o subtotal
         } else {
             freteMessageDiv.style.display = 'none';
             customerAddressTextarea.required = false;
             freteValue.textContent = 'Grátis';
-            cartTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`; // Total é o subtotal
         }
 
         cartSubtotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        cartTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
         
         updateCartCounter();
     }
-
+    
     function addToCart(item) {
         const existingItem = cart.find(cartItem => cartItem.name === item.name);
         
@@ -119,13 +140,46 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.push({ ...item, quantity: 1 });
         }
         updateCartDisplay();
+        saveCart(); // NOVO: Salva o carrinho após a alteração
     }
     
+    function increaseQuantity(itemName) {
+        const item = cart.find(cartItem => cartItem.name === itemName);
+        if (item) {
+            item.quantity++;
+            updateCartDisplay();
+            saveCart(); // NOVO: Salva o carrinho
+        }
+    }
+    
+    function decreaseQuantity(itemName) {
+        const item = cart.find(cartItem => cartItem.name === itemName);
+        if (item) {
+            item.quantity--;
+            if (item.quantity <= 0) {
+                removeItem(itemName);
+            } else {
+                updateCartDisplay();
+                saveCart(); // NOVO: Salva o carrinho
+            }
+        }
+    }
+    
+    function removeItem(itemName) {
+        cart = cart.filter(cartItem => cartItem.name !== itemName);
+        updateCartDisplay();
+        saveCart(); // NOVO: Salva o carrinho
+    }
+
     function clearCart() {
         cart = [];
         orderForm.reset();
         document.querySelector('input[name="frete-option"][value="retirada"]').checked = true;
+        document.querySelector('input[name="payment-method"][value="pix"]').checked = true;
+        trocoField.classList.add('hidden');
+        trocoValueInput.value = '';
         updateCartDisplay();
+        saveCart(); // NOVO: Salva o carrinho vazio
         cartModal.style.display = 'none';
     }
 
@@ -135,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const customerName = document.getElementById('customer-name').value;
         const customerAddress = document.getElementById('customer-address').value;
         const freteOption = document.querySelector('input[name="frete-option"]:checked').value;
+        const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+        const trocoValue = trocoValueInput.value;
 
         if (cart.length === 0) {
             alert('O seu carrinho está vazio! Adicione alguns itens antes de finalizar.');
@@ -146,6 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (freteOption === 'entrega' && !customerAddress) {
             alert('Por favor, preencha o seu endereço para a entrega.');
+            return;
+        }
+        if (paymentMethod === 'dinheiro' && trocoValue && parseFloat(trocoValue.replace(',', '.')) < cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0)) {
+            alert('O valor do troco deve ser maior que o subtotal do pedido.');
             return;
         }
 
@@ -160,18 +220,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (freteOption === 'entrega') {
             summary += `Frete: O valor será verificado após a confirmação do pedido.\n`;
             summary += `Total: R$ ${subtotal.toFixed(2).replace('.', ',')} (O valor do frete será adicionado)\n\n`;
-            summary += `--- Dados do Cliente ---\n`;
-            summary += `Nome: ${customerName}\n`;
-            summary += `Endereço: ${customerAddress}\n\n`;
-            summary += `Obrigado!`;
         } else {
             summary += `Frete: Grátis (Retirada no local)\n`;
             summary += `Total: R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`;
-            summary += `--- Dados do Cliente ---\n`;
-            summary += `Nome: ${customerName}\n`;
-            summary += `Opção: Retirada no Local\n\n`;
-            summary += `Obrigado!`;
         }
+
+        summary += `--- Pagamento ---\n`;
+        let paymentMethodText = '';
+        if (paymentMethod === 'pix') {
+            paymentMethodText = 'Pix';
+        } else if (paymentMethod === 'cartao') {
+            paymentMethodText = 'Cartão de Crédito/Débito';
+        } else {
+            paymentMethodText = `Dinheiro (Troco para R$ ${parseFloat(trocoValue || 0).toFixed(2).replace('.', ',')})`;
+        }
+        summary += `Forma de Pagamento: ${paymentMethodText}\n\n`;
+
+        summary += `--- Dados do Cliente ---\n`;
+        summary += `Nome: ${customerName}\n`;
+        if (freteOption === 'entrega') {
+            summary += `Endereço: ${customerAddress}\n\n`;
+        } else {
+            summary += `Opção: Retirada no Local\n\n`;
+        }
+        summary += `Obrigado!`;
 
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(summary)}`;
         window.open(whatsappUrl, '_blank');
@@ -180,6 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadMenu() {
+        cart = loadCart(); // NOVO: Carrega o carrinho no início
+        
         for (const category in menuData) {
             const data = menuData[category];
             const container = document.getElementById(`${category}-container`);
@@ -217,6 +291,31 @@ document.addEventListener('DOMContentLoaded', () => {
         
         freteOptions.forEach(radio => {
             radio.addEventListener('change', updateCartDisplay);
+        });
+
+        paymentMethods.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'dinheiro') {
+                    trocoField.classList.remove('hidden');
+                    trocoValueInput.required = true;
+                } else {
+                    trocoField.classList.add('hidden');
+                    trocoValueInput.required = false;
+                }
+            });
+        });
+        
+        cartItemsContainer.addEventListener('click', (e) => {
+            const button = e.target;
+            const itemName = button.dataset.itemName;
+            
+            if (button.classList.contains('increase-quantity')) {
+                increaseQuantity(itemName);
+            } else if (button.classList.contains('decrease-quantity')) {
+                decreaseQuantity(itemName);
+            } else if (button.classList.contains('remove-item')) {
+                removeItem(itemName);
+            }
         });
 
         updateCartDisplay();

@@ -1,46 +1,156 @@
-/* Estilos básicos para o corpo da página */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* ======================== */
+/* 1. CSS Reset Básico      */
+/* ======================== */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ======================== */
+/* 2. Estilos Globais (Tema Vermelho e Preto) */
+/* ======================== */
+
+:root {
+    --bg-color: #f5f5f5;      /* Fundo cinzento muito claro */
+    --text-color: #1a1a1a;    /* Preto para o texto principal */
+    --primary-color: #e50914; /* Vermelho vibrante para destaque */
+    --secondary-color: #333;  /* Cinzento escuro para detalhes */
+    --white: #fff;            /* Branco */
+    --dark-bg: #222;          /* Fundo escuro para cabeçalho */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
 }
 
-/* Estilos para o cabeçalho */
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+a, button {
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+/* ======================== */
+/* 3. Layout Principal (Tema Vermelho e Preto) */
+/* ======================== */
+
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--dark-bg); /* Fundo do cabeçalho preto */
+    color: var(--white);
     text-align: center;
     padding: 1rem 0;
     position: relative;
+    box-shadow: var(--shadow);
 }
 
 header h1 {
-    margin: 0;
+    color: var(--white);
 }
 
-/* Estilos para o container do ícone do carrinho */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* ======================== */
+/* 4. Componentes (Tema Vermelho e Preto) */
+/* ======================== */
+
+.card {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h3 {
+    color: var(--text-color);
+}
+
+.card .valor {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.card .add-to-cart {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.card .add-to-cart:hover {
+    background-color: #b2070c;
+    transform: translateY(-2px);
+}
+
+/* ======================== */
+/* 5. ESTILO DO CARRINHO */
+/* Ajuste para o ícone */
+/* ======================== */
+
 #cart-icon-container {
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: #fff;
+    color: var(--white); /* CORRIGIDO: Cor do ícone em branco para contrastar com o fundo preto */
     font-size: 1.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
-#cart-icon-container i {
-    position: relative;
+#cart-icon-container:hover {
+    transform: translateY(-50%) scale(1.1);
+    color: var(--primary-color);
 }
 
-/* Estilos para o contador de itens no carrinho */
 #cart-count {
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white);
     font-size: 0.8rem;
     font-weight: bold;
     border-radius: 50%;
@@ -54,76 +164,8 @@ header h1 {
     right: -10px;
 }
 
-/* Estilos para o conteúdo principal */
-main {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
-}
-
-/* Estilos para os títulos das secções */
-h2 {
-    color: #333;
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-    margin-top: 40px;
-}
-
-/* Estilos para o container de cards */
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-/* Estilos para cada card de item do cardápio */
-.card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card h3 {
-    margin-top: 0;
-    color: #007BFF;
-}
-
-.card p {
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.card .valor {
-    font-weight: bold;
-    color: #28a745;
-    font-size: 1.2rem;
-    text-align: right;
-    margin-top: 10px;
-}
-
-/* Estilos para o botão de adicionar */
-.card .add-to-cart {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.card .add-to-cart:hover {
-    background-color: #0056b3;
-}
-
-/* Estilos para o modal */
 .modal {
-    display: none; /* Oculta o modal por padrão */
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -131,7 +173,7 @@ h2 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); /* Fundo escurecido */
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -154,11 +196,12 @@ h2 {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    transition: color 0.2s ease;
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: black;
+    color: var(--primary-color);
     text-decoration: none;
     cursor: pointer;
 }
@@ -173,13 +216,13 @@ h2 {
     border-bottom: 1px dashed #ccc;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .cart-items-container li:last-child {
     border-bottom: none;
 }
 
-/* NOVO: Estilos para as opções de frete */
 .frete-options {
     margin-top: 20px;
     padding: 10px;
@@ -193,7 +236,6 @@ h2 {
     font-weight: normal;
 }
 
-/* NOVO: Estilos para o resumo do pedido no modal */
 .cart-summary {
     margin-top: 20px;
     border-top: 2px solid #333;
@@ -211,7 +253,81 @@ h2 {
     font-weight: bold;
 }
 
-/* Estilos para o formulário */
+.payment-methods {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.payment-methods label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+#troco-field {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.item-quantity-controls button {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 2px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.item-quantity-controls button:hover {
+    background-color: #ddd;
+    transform: scale(1.1);
+}
+
+.item-quantity-controls button:active {
+    transform: scale(0.9);
+}
+
+.item-quantity {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.remove-item {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    font-size: 0.8rem;
+    padding: 4px 8px !important;
+    margin-left: 10px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.remove-item:hover {
+    background-color: #b2070c !important;
+    transform: scale(1.1);
+}
+
+.remove-item:active {
+    transform: scale(0.9);
+}
+
 .customer-info-container {
     margin-top: 20px;
 }
@@ -232,16 +348,22 @@ h2 {
 
 #checkout-button {
     width: 100%;
-    background-color: #28a745;
-    color: #fff;
+    background-color: var(--secondary-color);
+    color: var(--white);
     border: none;
     padding: 12px;
     margin-top: 15px;
     border-radius: 5px;
     font-size: 1.1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 #checkout-button:hover {
-    background-color: #218838;
+    background-color: #444;
+    transform: translateY(-2px);
+}
+
+#checkout-button:active {
+    transform: translateY(0);
 }
