@@ -560,7 +560,7 @@ function generateWhatsAppLink() {
     const currentShippingCost = parseFloat(shippingInput.value) || 0;
 
     let subtotal = 0;
-    let message = `*NOVO PEDIDO DUNGA LANCHES!* 🍔🍟🥤\n\n`;
+    let message = `*NOVO PEDIDO DUNGA LANCHES!*\n\n`;
     message += `*Cliente:* ${customerName || 'Não informado'}\n`;
     message += `*Endereço:* ${customerAddress || 'Não informado'}\n\n`;
     message += `*Itens do Pedido:*\n`;
