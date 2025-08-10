@@ -1,0 +1,12 @@
+'pizzas': [
+    {
+        "Nome": "Calabresa",
+        "Ingredientes": "Calabresa e cebola",
+        "Valor": "R$ 39,90"
+    },
+    {
+        "Nome": "Mussarela",
+        "Ingredientes": "mussarela, oréganoe azeitona",
+        "Valor": "R$ 41,00"
+    }
+]

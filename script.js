@@ -6,52 +6,52 @@ document.addEventListener('DOMContentLoaded', () => {
         'beirutes': [
             {
                 "Nome": "Frango - Grande",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 54,90"
             },
             {
                 "Nome": "Frango - Pequeno",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 41,00"
             },
             {
                 "Nome": "Carne - Grande",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 68,90"
             },
             {
                 "Nome": "Carne - Pequeno",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 51,90"
             },
             {
                 "Nome": "Calabresa - Grande",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 64,90"
             },
             {
                 "Nome": "Calabresa - Pequeno",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 48,90"
             },
             {
                 "Nome": "Peito de Peru - Grande",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 65,90"
             },
             {
                 "Nome": "Peito de Peru - Pequeno",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 49,90"
             },
             {
                 "Nome": "Portuguesa - Grande",
-                "Ingredientes": "Mussarela, Presunto, Cebola, Ovo, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
                 "Valor": "R$ 51,90"
             },
             {
                 "Nome": "Portuguesa - Pequeno",
-                "Ingredientes": "Mussarela, Presunto, Cebola, Ovo, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
                 "Valor": "R$ 39,90"
             }
         ],
@@ -133,9 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ],
         'pizzas': [
-            { "Sabor": "CALABRESA", "Ingredientes": "Mussarela, calabresa, cebola e azeitonas", "Valor": "R$ 45,00" },
-            { "Sabor": "MARGUERITA", "Ingredientes": "Mussarela, tomate e manjericão", "Valor": "R$ 40,00" },
-            { "Sabor": "PORTUGUESA", "Ingredientes": "Mussarela, presunto, ovo, ervilha, cebola e azeitonas", "Valor": "R$ 50,00" }
+            {
+                "Nome": "Calabresa",
+                "Ingredientes": "Calabresa e cebola",
+                "Valor": "R$ 39,90"
+            },
+            {
+                "Nome": "Mussarela",
+                "Ingredientes": "mussarela, orégano e azeitona",
+                "Valor": "R$ 41,00"
+            }
         ],
         'lanches': [
             { "Nome": "X-SALADA", "Descrição": "Hambúrguer, queijo e salada", "Valor": "R$ 15,00" },
@@ -323,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Por favor, preencha o seu endereço para a entrega.');
             return;
         }
-        if (paymentMethod === 'dinheiro' && trocoValue && parseFloat(trocoValue.replace(',', '.')) < cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0)) {
+        if (paymentMethod === 'dinheiro' && trocoValue && parseValue(trocoValue) < cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0)) {
             alert('O valor do troco deve ser maior que o subtotal do pedido.');
             return;
         }
