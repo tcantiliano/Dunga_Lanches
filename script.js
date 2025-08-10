@@ -6,52 +6,52 @@ document.addEventListener('DOMContentLoaded', () => {
         'beirutes': [
             {
                 "Nome": "Frango - Grande",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 54,90"
             },
             {
                 "Nome": "Frango - Pequeno",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 41,00"
             },
             {
                 "Nome": "Carne - Grande",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 68,90"
             },
             {
                 "Nome": "Carne - Pequeno",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 51,90"
             },
             {
                 "Nome": "Calabresa - Grande",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 64,90"
             },
             {
                 "Nome": "Calabresa - Pequeno",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 48,90"
             },
             {
                 "Nome": "Peito de Peru - Grande",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 65,90"
             },
             {
                 "Nome": "Peito de Peru - Pequeno",
-                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
                 "Valor": "R$ 49,90"
             },
             {
                 "Nome": "Portuguesa - Grande",
-                "Ingredientes": "Mussarela, Presunto, Cebola, Ovo, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
                 "Valor": "R$ 51,90"
             },
             {
                 "Nome": "Portuguesa - Pequeno",
-                "Ingredientes": "Mussarela, Presunto, Cebola, Ovo, Maionese, Alface, Tomate e Orégano",
+                "Ingredientes": "mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
                 "Valor": "R$ 39,90"
             }
         ],
@@ -230,9 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ],
         'lanches': [
-            { "Nome": "X-SALADA", "Descrição": "Hambúrguer, queijo e salada", "Valor": "R$ 15,00" },
-            { "Nome": "X-BACON", "Descrição": "Hambúrguer, queijo e bacon", "Valor": "R$ 16,00" },
-            { "Nome": "X-EGG", "Descrição": "Hambúrguer, queijo e ovo", "Valor": "R$ 16,00" }
+            { "Nome": "X-SALADA", "Descrição": "hambúrguer, queijo e salada", "Valor": "R$ 15,00" },
+            { "Nome": "X-BACON", "Descrição": "hambúrguer, queijo e bacon", "Valor": "R$ 16,00" },
+            { "Nome": "X-EGG", "Descrição": "hambúrguer, queijo e ovo", "Valor": "R$ 16,00" }
         ]
     };
 
