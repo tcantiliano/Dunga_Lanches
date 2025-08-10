@@ -6,52 +6,52 @@ document.addEventListener('DOMContentLoaded', () => {
         'beirutes': [
             {
                 "Nome": "Frango - Grande",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 54,90"
             },
             {
                 "Nome": "Frango - Pequeno",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 41,00"
             },
             {
                 "Nome": "Carne - Grande",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 68,90"
             },
             {
                 "Nome": "Carne - Pequeno",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 51,90"
             },
             {
                 "Nome": "Calabresa - Grande",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 64,90"
             },
             {
                 "Nome": "Calabresa - Pequeno",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 48,90"
             },
             {
                 "Nome": "Peito de Peru - Grande",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 65,90"
             },
             {
                 "Nome": "Peito de Peru - Pequeno",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 49,90"
             },
             {
                 "Nome": "Portuguesa - Grande",
-                "Ingredientes": "mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Presunto, Cebola, Ovo, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 51,90"
             },
             {
                 "Nome": "Portuguesa - Pequeno",
-                "Ingredientes": "mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
+                "Ingredientes": "Mussarela, Presunto, Cebola, Ovo, Maionese, Alface, Tomate e Orégano",
                 "Valor": "R$ 39,90"
             }
         ],
@@ -135,13 +135,98 @@ document.addEventListener('DOMContentLoaded', () => {
         'pizzas': [
             {
                 "Nome": "Calabresa",
-                "Ingredientes": "Calabresa e cebola",
+                "Ingredientes": "mussarela e cebola",
                 "Valor": "R$ 39,90"
             },
             {
                 "Nome": "Mussarela",
                 "Ingredientes": "mussarela, orégano e azeitona",
-                "Valor": "R$ 41,00"
+                "Valor": "R$ 38,90"
+            },
+            {
+                "Nome": "Toscana",
+                "Ingredientes": "calabresa, mussarela, cebola e azeitona",
+                "Valor": "R$ 46,90"
+            },
+            {
+                "Nome": "Brócolis",
+                "Ingredientes": "mussarela, alho e azeitona",
+                "Valor": "R$ 41,90"
+            },
+            {
+                "Nome": "Palmito",
+                "Ingredientes": "mussarela, catupiry e azeitona",
+                "Valor": "R$ 48,90"
+            },
+            {
+                "Nome": "Atum",
+                "Ingredientes": "cebola ou com mussarela, azeitona",
+                "Valor": "R$ 49,90"
+            },
+            {
+                "Nome": "Bauru",
+                "Ingredientes": "tomate, mussarela e azeitona",
+                "Valor": "R$ 41,90"
+            },
+            {
+                "Nome": "Escarola",
+                "Ingredientes": "bacon, mussarela e azeitona",
+                "Valor": "R$ 41,90"
+            },
+            {
+                "Nome": "Bacon",
+                "Ingredientes": "mussarela e azeitona",
+                "Valor": "R$ 49,90"
+            },
+            {
+                "Nome": "Baiana",
+                "Ingredientes": "calabresa moida, pimenta, mussarela e azeitona",
+                "Valor": "R$ 41,90"
+            },
+            {
+                "Nome": "Dois Queijos",
+                "Ingredientes": "mussarela, catupiry, tomate e azeitona",
+                "Valor": "R$ 46,90"
+            },
+            {
+                "Nome": "Três Queijos",
+                "Ingredientes": "mussarela, provolone, parmesão e azeitona",
+                "Valor": "R$ 50,90"
+            },
+            {
+                "Nome": "Quatro Queijos",
+                "Ingredientes": "mussarela, gorgonzola, provolone, parmesão e azeitona",
+                "Valor": "R$ 51,90"
+            },
+            {
+                "Nome": "Napolitana",
+                "Ingredientes": "mussarela, tomate e azeitona",
+                "Valor": "R$ 41,90"
+            },
+            {
+                "Nome": "Portuguesa",
+                "Ingredientes": "mussarela, presunto, ovo, cebola e azeitona",
+                "Valor": "R$ 47,90"
+            },
+            {
+                "Nome": "Frango com Catupiry",
+                "Ingredientes": "frango ralado, catupiry e azeitona",
+                "Valor": "R$ 47,90"
+            },
+            {
+                "Nome": "Lombo",
+                "Ingredientes": "mussarela ou catupiry, cebola e azeitona",
+                "Valor": "R$ 50,90"
+            },
+            {
+                "Nome": "Carne seca",
+                "Ingredientes": "mussarela e azeitona",
+                "Valor": "R$ 50,90"
+            },
+            {
+                "Nome": "Alho",
+                "Ingredientes": "mussarela, alho e azeitona",
+                "Valor": "R$ 41,90"
             }
         ],
         'lanches': [
@@ -330,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Por favor, preencha o seu endereço para a entrega.');
             return;
         }
-        if (paymentMethod === 'dinheiro' && trocoValue && parseValue(trocoValue) < cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0)) {
+        if (paymentMethod === 'dinheiro' && trocoValue && parseFloat(trocoValue.replace(',', '.')) < cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0)) {
             alert('O valor do troco deve ser maior que o subtotal do pedido.');
             return;
         }
