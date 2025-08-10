@@ -4,9 +4,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const menuData = {
         'beirutes': [
-            { "Nome": "FILÉ DE FRANGO", "Ingredientes": "Filé de frango, queijo, alface e tomate", "Valor": "R$ 25,00" },
-            { "Nome": "ROS BIFE", "Ingredientes": "Rosbife, queijo, alface e tomate", "Valor": "R$ 28,00" },
-            { "Nome": "AMERICANO", "Ingredientes": "Presunto, queijo, ovo, alface e tomate", "Valor": "R$ 22,00" }
+            {
+                "Nome": "Frango - Grande",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 54,90"
+            },
+            {
+                "Nome": "Frango - Pequeno",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 41,90"
+            },
+            {
+                "Nome": "Carne - Grande",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 68,90"
+            },
+            {
+                "Nome": "Carne - Pequeno",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 51,90"
+            },
+            {
+                "Nome": "Calabresa - Grande",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 64,90"
+            },
+            {
+                "Nome": "Calabresa - Pequeno",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 48,90"
+            },
+            {
+                "Nome": "Peito de Peru - Grande",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 65,90"
+            },
+            {
+                "Nome": "Peito de Peru - Pequeno",
+                "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 49,90"
+            },
+            {
+                "Nome": "Portuguesa - Grande",
+                "Ingredientes": "Mussarela, Presunto, Cebola, Ovo, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 51,90"
+            },
+            {
+                "Nome": "Portuguesa - Pequeno",
+                "Ingredientes": "Mussarela, Presunto, Cebola, Ovo, Maionese, Alface, Tomate e Orégano",
+                "Valor": "R$ 39,90"
+            }
         ],
         'porcoes': [
             { "Nome": "BATATA FRITA", "Valor": "R$ 20,00" },
@@ -24,20 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
             { "Nome": "X-EGG", "Descrição": "Hambúrguer, queijo e ovo", "Valor": "R$ 16,00" }
         ]
     };
-    
+
     let cart = [];
     const cartModal = document.getElementById('cart-modal');
     const closeButton = document.querySelector('.close-button');
     const cartIcon = document.getElementById('cart-icon-container');
     const orderForm = document.getElementById('order-form');
-    
+
     const cartSubtotalValue = document.getElementById('cart-subtotal-value');
     const freteValue = document.getElementById('frete-value');
     const cartTotalValue = document.getElementById('cart-total-value');
     const freteOptions = document.querySelectorAll('input[name="frete-option"]');
     const customerAddressTextarea = document.getElementById('customer-address');
     const freteMessageDiv = document.getElementById('frete-message');
-    
+
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
     const trocoField = document.getElementById('troco-field');
     const trocoValueInput = document.getElementById('troco-value');
@@ -52,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function saveCart() {
         localStorage.setItem('dungaLanchesCart', JSON.stringify(cart));
     }
-    
+
     // NOVO: Função para carregar o carrinho do localStorage
     function loadCart() {
         const storedCart = localStorage.getItem('dungaLanchesCart');
@@ -66,18 +113,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const nome = item['Nome'] || item['Sabor'] || 'Item sem nome';
         const descricao = item['Descrição'] || item['Ingredientes'] || '';
         const valor = item['Valor'] || 'Preço não disponível';
-        
+
         let cardContent = `
             <h3>${nome}</h3>
             ${descricao ? `<p>${descricao}</p>` : ''}
             <div class="valor">${valor}</div>
             <button class="add-to-cart" data-category="${category}" data-item-name="${nome}" data-item-price="${valor}">Adicionar ao Carrinho</button>
         `;
-        
+
         card.innerHTML = cardContent;
         return card;
     }
-    
+
     function updateCartCounter() {
         const cartCountSpan = document.getElementById('cart-count');
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -86,16 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCartDisplay() {
         cartItemsContainer.innerHTML = '';
-        
+
         let subtotal = 0;
-        
+
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<li>O seu carrinho está vazio.</li>';
         } else {
             cart.forEach(item => {
                 const valorNumerico = parseValue(item.price);
                 subtotal += valorNumerico * item.quantity;
-                
+
                 const li = document.createElement('li');
                 li.innerHTML = `
                     <div class="item-info">
@@ -112,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartItemsContainer.appendChild(li);
             });
         }
-        
+
         const selectedFreteOption = document.querySelector('input[name="frete-option"]:checked').value;
         if (selectedFreteOption === 'entrega') {
             freteMessageDiv.textContent = 'A distância máxima é de 5km. O seu endereço será verificado dentro de instantes para a confirmação do valor e se estará dentro do nosso alcance, em seguida será enviado o valor do frete.';
@@ -127,13 +174,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cartSubtotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
         cartTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-        
+
         updateCartCounter();
     }
-    
+
     function addToCart(item) {
         const existingItem = cart.find(cartItem => cartItem.name === item.name);
-        
+
         if (existingItem) {
             existingItem.quantity++;
         } else {
@@ -142,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartDisplay();
         saveCart(); // NOVO: Salva o carrinho após a alteração
     }
-    
+
     function increaseQuantity(itemName) {
         const item = cart.find(cartItem => cartItem.name === itemName);
         if (item) {
@@ -151,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             saveCart(); // NOVO: Salva o carrinho
         }
     }
-    
+
     function decreaseQuantity(itemName) {
         const item = cart.find(cartItem => cartItem.name === itemName);
         if (item) {
@@ -164,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    
+
     function removeItem(itemName) {
         cart = cart.filter(cartItem => cartItem.name !== itemName);
         updateCartDisplay();
@@ -184,8 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function generateOrderSummary(event) {
-        event.preventDefault(); 
-        
+        event.preventDefault();
+
         const customerName = document.getElementById('customer-name').value;
         const customerAddress = document.getElementById('customer-address').value;
         const freteOption = document.querySelector('input[name="frete-option"]:checked').value;
@@ -216,12 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
             summary += `- ${item.name} (x${item.quantity}): ${item.price}\n`;
         });
         summary += `\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
-        
+
         if (freteOption === 'entrega') {
             summary += `Frete: O valor será verificado após a confirmação do pedido.\n`;
             summary += `Total: R$ ${subtotal.toFixed(2).replace('.', ',')} (O valor do frete será adicionado)\n\n`;
         } else {
-            summary += `Frete: Grátis (Retirada no local)\n`;
+            summary += `Frete: Grátis (Retirada no Local)\n`;
             summary += `Total: R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`;
         }
 
@@ -247,23 +294,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(summary)}`;
         window.open(whatsappUrl, '_blank');
-        
+
         setTimeout(clearCart, 1000);
     }
 
     function loadMenu() {
         cart = loadCart(); // NOVO: Carrega o carrinho no início
-        
+
         for (const category in menuData) {
             const data = menuData[category];
             const container = document.getElementById(`${category}-container`);
-            
+
             data.forEach(item => {
                 const card = createCard(item, category);
                 container.appendChild(card);
             });
         }
-        
+
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', (e) => {
                 const itemName = e.target.dataset.itemName;
@@ -271,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 addToCart({ name: itemName, price: itemPrice });
             });
         });
-        
+
         orderForm.addEventListener('submit', generateOrderSummary);
 
         cartIcon.addEventListener('click', () => {
@@ -288,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartModal.style.display = 'none';
             }
         });
-        
+
         freteOptions.forEach(radio => {
             radio.addEventListener('change', updateCartDisplay);
         });
@@ -304,11 +351,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-        
+
         cartItemsContainer.addEventListener('click', (e) => {
             const button = e.target;
             const itemName = button.dataset.itemName;
-            
+
             if (button.classList.contains('increase-quantity')) {
                 increaseQuantity(itemName);
             } else if (button.classList.contains('decrease-quantity')) {
