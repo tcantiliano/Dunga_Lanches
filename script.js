@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Defina o número de telefone do WhatsApp do restaurante
-    const WHATSAPP_NUMBER = "5511982787268"; // Exemplo: 5511999999999
+    const WHATSAPP_NUMBER = "5511962339709"; // Exemplo: 5511999999999
 
     const menuData = {
         'beirutes': [
