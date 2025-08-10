@@ -307,6 +307,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const trocoField = document.getElementById('troco-field');
     const trocoValueInput = document.getElementById('troco-value');
     const cartItemsContainer = document.getElementById('cart-items');
+    const headerElement = document.querySelector('header');
+    const cartIconContainer = document.getElementById('cart-icon-container');
+
+    let headerHeight = headerElement ? headerElement.offsetHeight : 50; // Altura padrão se o cabeçalho não existir
+
+    // Adicionado: Event listener para detectar a rolagem da página
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > headerHeight) {
+            cartIconContainer.classList.add('scrolled');
+        } else {
+            cartIconContainer.classList.remove('scrolled');
+        }
+    });
 
     function parseValue(valueString) {
         const cleanValue = valueString.replace('R$', '').replace(',', '.').trim();

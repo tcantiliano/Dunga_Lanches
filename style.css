@@ -24,6 +24,8 @@ body {
     --white: #fff;            /* Branco */
     --dark-bg: #222;          /* Fundo escuro para cabeçalho */
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    --cart-fixed-color: var(--white); /* Cor inicial do carrinho fixo */
+    --cart-scrolled-color: var(--primary-color); /* Cor do carrinho ao scrollar */
 }
 
 html {
@@ -37,14 +39,18 @@ body {
     line-height: 1.6;
 }
 
-h1, h2, h3 {
+/* Removido: A cor dos títulos globais, que estava sobrepondo a cor do header */
+h2, h3 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
+/* Modificado: A cor do <h1> no header é explicitamente definida como branco */
+h1 {
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
 
 a, button {
     cursor: pointer;
@@ -61,21 +67,15 @@ header {
     color: var(--white);
     text-align: center;
     padding: 1rem 0;
-    position: fixed; /* MODIFICADO: Deixa o cabeçalho fixo na tela */
-    top: 0;          /* MODIFICADO: Alinha o cabeçalho no topo */
-    width: 100%;     /* MODIFICADO: Garante que ocupe a largura total */
-    z-index: 100;    /* MODIFICADO: Garante que esteja por cima de outros elementos */
     box-shadow: var(--shadow);
-}
-
-header h1 {
-    color: var(--white);
+    position: relative;
+    z-index: 999;
 }
 
 main {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 100px 20px 0; /* MODIFICADO: Adiciona padding no topo para o conteúdo não ficar atrás do cabeçalho fixo */
+    padding: 0 20px;
 }
 
 section {
@@ -134,21 +134,24 @@ section {
 /* ======================== */
 
 #cart-icon-container {
-    position: absolute;
+    position: fixed;
     right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--white);
+    top: 20px;
+    color: var(--cart-fixed-color);
     font-size: 1.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+#cart-icon-container.scrolled {
+    color: var(--cart-scrolled-color);
 }
 
 #cart-icon-container:hover {
-    transform: translateY(-50%) scale(1.1);
-    color: var(--primary-color);
+    transform: scale(1.1);
 }
 
 #cart-count {
