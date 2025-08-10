@@ -133,7 +133,7 @@ section {
 #cart-icon-container {
     position: fixed;
     right: 20px;
-    top: 20px;
+    top: 40px;
     color: var(--cart-fixed-color);
     font-size: 1.5rem;
     cursor: pointer;
