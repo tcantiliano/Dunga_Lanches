@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Defina o número de telefone do WhatsApp do restaurante
-    const WHATSAPP_NUMBER = "5511962339709"; // Exemplo: 5511999999999
+    const WHATSAPP_NUMBER = "5511982787268"; // Exemplo: 5511999999999
 
     const menuData = {
         'beirutes': [
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 "Nome": "Frango - Pequeno",
                 "Ingredientes": "Mussarela, Maionese, Alface, Tomate e Orégano",
-                "Valor": "R$ 41,90"
+                "Valor": "R$ 41,00"
             },
             {
                 "Nome": "Carne - Grande",
@@ -56,9 +56,81 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ],
         'porcoes': [
-            { "Nome": "BATATA FRITA", "Valor": "R$ 20,00" },
-            { "Nome": "MANDIOCA FRITA", "Valor": "R$ 22,00" },
-            { "Nome": "FRANGO A PASSARINHO", "Valor": "R$ 30,00" }
+            {
+                "Nome": "Frango a Passarinho com Fritas - Grande",
+                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas",
+                "Valor": "R$ 54,90"
+            },
+            {
+                "Nome": "Frango a Passarinho com Fritas - Pequena",
+                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas",
+                "Valor": "R$ 34,90"
+            },
+            {
+                "Nome": "Frango a Passarinho com Fritas Cheddar e Bacon - Grande",
+                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, cheddar e bacon",
+                "Valor": "R$ 64,90"
+            },
+            {
+                "Nome": "Frango a Passarinho com Fritas Cheddar e Bacon - Pequena",
+                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, cheddar e bacon",
+                "Valor": "R$ 44,90"
+            },
+            {
+                "Nome": "Frango a Passarinho com Fritas e Mandioca - Grande",
+                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas e mandioca",
+                "Valor": "R$ 67,90"
+            },
+            {
+                "Nome": "Frango a Passarinho com Fritas e Mandioca - Pequena",
+                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, mandioca, cheddar e bacon",
+                "Valor": "R$ 39,90"
+            },
+            {
+                "Nome": "Frango a Passarinho com Fritas e Mandioca Cheddar e Bacon - Grande",
+                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas e mandioca",
+                "Valor": "R$ 81,90"
+            },
+            {
+                "Nome": "Frango a Passarinho com Fritas e Mandioca Cheddar e Bacon - Pequena",
+                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, mandioca, cheddar e bacon",
+                "Valor": "R$ 49,90"
+            },
+            {
+                "Nome": "Carne Seca Acebolada com Mandioca",
+                "Ingredientes": "carne seca, cebola e mandioca",
+                "Valor": "R$ 67,90"
+            },
+            {
+                "Nome": "Carne Seca Acebolada com Mandioca e Queijo Coalho",
+                "Ingredientes": "carne seca, cebola, mandioca e queijo coalho",
+                "Valor": "R$ 84,90"
+            },
+            {
+                "Nome": "Porção de Fritas - Grande",
+                "Ingredientes": "batata frita na caixa de brotinho",
+                "Valor": "R$ 28,90"
+            },
+            {
+                "Nome": "Porção de Fritas - Pequena",
+                "Ingredientes": "batata frita, cheddar e bacon",
+                "Valor": "R$ 14,90"
+            },
+            {
+                "Nome": "Porção de Fritas com Cheddar e Bacon - Grande",
+                "Ingredientes": "batata frita na caixa de brotinho",
+                "Valor": "R$ 38,90"
+            },
+            {
+                "Nome": "Porção de Fritas com Cheddar e Bacon - Pequena",
+                "Ingredientes": "batata frita, cheddar e bacon",
+                "Valor": "R$ 21,90"
+            },
+            {
+                "Nome": "Isca de Peixe - Grande",
+                "Ingredientes": "isca de peixe",
+                "Valor": "R$ 54,90"
+            }
         ],
         'pizzas': [
             { "Sabor": "CALABRESA", "Ingredientes": "Mussarela, calabresa, cebola e azeitonas", "Valor": "R$ 45,00" },
@@ -95,12 +167,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return parseFloat(cleanValue) || 0;
     }
 
-    // NOVO: Função para guardar o carrinho no localStorage
+    // Função para guardar o carrinho no localStorage
     function saveCart() {
         localStorage.setItem('dungaLanchesCart', JSON.stringify(cart));
     }
 
-    // NOVO: Função para carregar o carrinho do localStorage
+    // Função para carregar o carrinho do localStorage
     function loadCart() {
         const storedCart = localStorage.getItem('dungaLanchesCart');
         return storedCart ? JSON.parse(storedCart) : [];
@@ -187,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.push({ ...item, quantity: 1 });
         }
         updateCartDisplay();
-        saveCart(); // NOVO: Salva o carrinho após a alteração
+        saveCart();
     }
 
     function increaseQuantity(itemName) {
@@ -195,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (item) {
             item.quantity++;
             updateCartDisplay();
-            saveCart(); // NOVO: Salva o carrinho
+            saveCart();
         }
     }
 
@@ -207,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeItem(itemName);
             } else {
                 updateCartDisplay();
-                saveCart(); // NOVO: Salva o carrinho
+                saveCart();
             }
         }
     }
@@ -215,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function removeItem(itemName) {
         cart = cart.filter(cartItem => cartItem.name !== itemName);
         updateCartDisplay();
-        saveCart(); // NOVO: Salva o carrinho
+        saveCart();
     }
 
     function clearCart() {
@@ -226,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
         trocoField.classList.add('hidden');
         trocoValueInput.value = '';
         updateCartDisplay();
-        saveCart(); // NOVO: Salva o carrinho vazio
+        saveCart();
         cartModal.style.display = 'none';
     }
 
@@ -299,12 +371,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadMenu() {
-        cart = loadCart(); // NOVO: Carrega o carrinho no início
+        cart = loadCart();
 
         for (const category in menuData) {
             const data = menuData[category];
             const container = document.getElementById(`${category}-container`);
 
+            container.innerHTML = '';
             data.forEach(item => {
                 const card = createCard(item, category);
                 container.appendChild(card);

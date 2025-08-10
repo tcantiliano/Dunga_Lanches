@@ -1,0 +1,77 @@
+'porcoes': [
+    {
+        "Nome": "Frango a Passarinho com Fritas - Grande",
+        "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas",
+        "Valor": "R$ 54,90"
+    },
+    {
+        "Nome": "Frango a Passarinho com Fritas - Pequena",
+        "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas",
+        "Valor": "R$ 34,90"
+    }
+        {
+        "Nome": "Frango a Passarinho com Fritas Chedder e Bacon - Grande",
+        "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, chedder e bacon",
+        "Valor": "R$ 64,90"
+    },
+    {
+        "Nome": "Frango a Passarinho com Fritas Chedder e Bacon - Pequena",
+        "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, chedder e bacon",
+        "Valor": "R$ 44,90"
+    }
+        {
+        "Nome": "Frango a Passarinho com Fritas e Mandioca - Grande",
+        "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas e mandioca",
+        "Valor": "R$ 67,90"
+    },
+    {
+        "Nome": "Frango a Passarinho com Fritas e Mandioca - Pequena",
+        "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, mandioca, chedder e bacon",
+        "Valor": "R$ 39,90"
+    }
+        {
+        "Nome": "Frango a Passarinho com Fritas e Mandioca Chedder e Bacon - Grande",
+        "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas e mandioca",
+        "Valor": "R$ 81,90"
+    },
+    {
+        "Nome": "Frango a Passarinho com Fritas e Mandioca Chedder e Bacon - Pequena",
+        "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, mandioca, chedder e bacon",
+        "Valor": "R$ 49,90"
+    }
+        {
+        "Nome": "Carne Seca Acebolada com Mandioca",
+        "Ingredientes": "carne seca, cebola e mandioca",
+        "Valor": "R$ 67,90"
+    },
+    {
+        "Nome": "Carne Seca Acebolada com Mandioca e Queijo Coalho",
+        "Ingredientes": "carne seca, cebola, mandioca e queino coalho",
+        "Valor": "R$ 84,90"
+    }
+        {
+        "Nome": "Porção de Fritas - Grande",
+        "Ingredientes": "batata frita na caixa de brotinho",
+        "Valor": "R$ 28,90"
+    },
+    {
+        "Nome": "Porção de Fritas - Pequena",
+        "Ingredientes": "batata frita, cheddar e bacon ",
+        "Valor": "R$ 14,90"
+    }
+            {
+        "Nome": "Porção de Fritas com Cheddar e bacon - Grande",
+        "Ingredientes": "batata frita na caixa de brotinho",
+        "Valor": "R$ 38,90"
+    },
+    {
+        "Nome": "Porção de Fritas com Cheddar e bacon - Pequena",
+        "Ingredientes": "batata frita, cheddar e bacon ",
+        "Valor": "R$ 21,90"
+    }
+            {
+        "Nome": "Isca de Peixe - Grande",
+        "Ingredientes": "isca de peixe",
+        "Valor": "R$ 54,90"
+    }
+]
