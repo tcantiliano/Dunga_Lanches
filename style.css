@@ -57,11 +57,14 @@ a, button {
 /* ======================== */
 
 header {
-    background-color: var(--dark-bg); /* Fundo do cabeçalho preto */
+    background-color: var(--dark-bg);
     color: var(--white);
     text-align: center;
     padding: 1rem 0;
-    position: relative;
+    position: fixed; /* MODIFICADO: Deixa o cabeçalho fixo na tela */
+    top: 0;          /* MODIFICADO: Alinha o cabeçalho no topo */
+    width: 100%;     /* MODIFICADO: Garante que ocupe a largura total */
+    z-index: 100;    /* MODIFICADO: Garante que esteja por cima de outros elementos */
     box-shadow: var(--shadow);
 }
 
@@ -72,7 +75,7 @@ header h1 {
 main {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 0 20px;
+    padding: 100px 20px 0; /* MODIFICADO: Adiciona padding no topo para o conteúdo não ficar atrás do cabeçalho fixo */
 }
 
 section {
@@ -135,7 +138,7 @@ section {
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--white); /* CORRIGIDO: Cor do ícone em branco para contrastar com o fundo preto */
+    color: var(--white);
     font-size: 1.5rem;
     cursor: pointer;
     display: flex;
