@@ -39,13 +39,11 @@ body {
     line-height: 1.6;
 }
 
-/* Removido: A cor dos títulos globais, que estava sobrepondo a cor do header */
 h2, h3 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
-/* Modificado: A cor do <h1> no header é explicitamente definida como branco */
 h1 {
     font-size: 2.5rem;
     color: var(--white);
@@ -68,8 +66,7 @@ header {
     text-align: center;
     padding: 1rem 0;
     box-shadow: var(--shadow);
-    position: relative;
-    z-index: 999;
+    /* Removido: 'position: relative;' e 'z-index: 999;' que não são necessários aqui */
 }
 
 main {

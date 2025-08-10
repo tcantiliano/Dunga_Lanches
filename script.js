@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let headerHeight = headerElement ? headerElement.offsetHeight : 50; // Altura padrão se o cabeçalho não existir
 
-    // Adicionado: Event listener para detectar a rolagem da página
+    // Ajustado: A altura da rolagem para a mudança de cor do ícone do carrinho
     window.addEventListener('scroll', () => {
         if (window.scrollY > headerHeight) {
             cartIconContainer.classList.add('scrolled');
