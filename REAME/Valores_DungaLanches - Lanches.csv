@@ -1,0 +1,48 @@
+'lanches': [
+    {
+        "Nome": "X-Frango Grelhado",
+        "Ingredientes": "",
+        "Valor": "R$ 19,90"
+    },
+    {
+        "Nome": "X-Peito de Peru",
+        "Ingredientes": "",
+        "Valor": "R$ 20,90"
+    },
+    {
+        "Nome": "X-Salada",
+        "Ingredientes": "",
+        "Valor": "R$ 16,90"
+    },
+    {
+        "Nome": "X-Bacon",
+        "Ingredientes": "",
+        "Valor": "R$ 17,90"
+    },
+    {
+        "Nome": "X-Contra File",
+        "Ingredientes": "",
+        "Valor": "R$ 21,90"
+    },
+    {
+        "Nome": "X-Egg",
+        "Ingredientes": "",
+        "Valor": "R$ 17,90"
+    }
+        {
+        "Nome": "X-Presunto",
+        "Ingredientes": "",
+        "Valor": "R$ 18,90"
+    },
+    {
+        "Nome": "Bauru",
+        "Ingredientes": "",
+        "Valor": "R$ 14,90"
+    }
+    ,
+    {
+        "Nome": "Misto Quente",
+        "Ingredientes": "",
+        "Valor": "R$ 12,90"
+    }
+]

@@ -230,9 +230,63 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ],
         'lanches': [
-            { "Nome": "X-SALADA", "Descrição": "hambúrguer, queijo e salada", "Valor": "R$ 15,00" },
-            { "Nome": "X-BACON", "Descrição": "hambúrguer, queijo e bacon", "Valor": "R$ 16,00" },
-            { "Nome": "X-EGG", "Descrição": "hambúrguer, queijo e ovo", "Valor": "R$ 16,00" }
+            {
+                "Nome": "X-Frango Grelhado",
+                "Ingredientes": "hambúrguer de frango grelhado, queijo, salada e maionese",
+                "Valor": "R$ 19,90"
+            },
+            {
+                "Nome": "X-Peito de Peru",
+                "Ingredientes": "pão, peito de peru, queijo, salada e maionese",
+                "Valor": "R$ 20,90"
+            },
+            {
+                "Nome": "X-Salada",
+                "Ingredientes": "hambúrguer, queijo, salada e maionese",
+                "Valor": "R$ 16,90"
+            },
+            {
+                "Nome": "X-Bacon",
+                "Ingredientes": "hambúrguer, queijo, bacon, salada e maionese",
+                "Valor": "R$ 17,90"
+            },
+            {
+                "Nome": "X-Contra File",
+                "Ingredientes": "contra filé, queijo, salada e maionese",
+                "Valor": "R$ 21,90"
+            },
+            {
+                "Nome": "X-Egg",
+                "Ingredientes": "hambúrguer, queijo, ovo, salada e maionese",
+                "Valor": "R$ 17,90"
+            },
+            {
+                "Nome": "X-Presunto",
+                "Ingredientes": "hambúrguer, queijo, presunto, salada e maionese",
+                "Valor": "R$ 18,90"
+            },
+            {
+                "Nome": "Bauru",
+                "Ingredientes": "presunto, queijo, tomate e orégano",
+                "Valor": "R$ 14,90"
+            },
+            {
+                "Nome": "Misto Quente",
+                "Ingredientes": "pão, presunto e queijo",
+                "Valor": "R$ 12,90"
+            }
+        ],
+        'bebidas': [
+            {
+                "Nome": "Refrigerante lata",
+                "Ingredientes": "",
+                "Valor": "R$ 6,00"
+            },
+            {
+                "Nome": "Suco de Laranja Natural",
+                "Ingredientes": "",
+                "Valor": "R$ 8,00"
+            }
         ]
     };
 
