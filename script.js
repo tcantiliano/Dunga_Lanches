@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Defina o número de telefone do WhatsApp do restaurante
-    const WHATSAPP_NUMBER = "5511982787268"; // Exemplo: 5511999999999
+    // 1. Definição de constantes e dados do menu
+    const WHATSAPP_NUMBER = "5511982787268";
 
     const menuData = {
         'beirutes': [
@@ -290,90 +290,177 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-    let cart = [];
     const cartModal = document.getElementById('cart-modal');
     const closeButton = document.querySelector('.close-button');
-    const cartIcon = document.getElementById('cart-icon-container');
+    const cartIconContainer = document.getElementById('cart-icon-container');
+    const cartCountSpan = document.getElementById('cart-count');
     const orderForm = document.getElementById('order-form');
-
+    const cartItemsContainer = document.getElementById('cart-items');
     const cartSubtotalValue = document.getElementById('cart-subtotal-value');
     const freteValue = document.getElementById('frete-value');
     const cartTotalValue = document.getElementById('cart-total-value');
     const freteOptions = document.querySelectorAll('input[name="frete-option"]');
     const customerAddressTextarea = document.getElementById('customer-address');
     const freteMessageDiv = document.getElementById('frete-message');
-
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
     const trocoField = document.getElementById('troco-field');
     const trocoValueInput = document.getElementById('troco-value');
-    const cartItemsContainer = document.getElementById('cart-items');
+    
+    // Altura do cabeçalho para o evento de scroll
     const headerElement = document.querySelector('header');
-    const cartIconContainer = document.getElementById('cart-icon-container');
+    let headerHeight = headerElement ? headerElement.offsetHeight : 50;
+    
+    // Carrinho global
+    let cart = [];
 
-    let headerHeight = headerElement ? headerElement.offsetHeight : 50; // Altura padrão se o cabeçalho não existir
+    // --- Funções Auxiliares ---
 
-    // Adicionado: Event listener para detectar a rolagem da página
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > headerHeight) {
-            cartIconContainer.classList.add('scrolled');
-        } else {
-            cartIconContainer.classList.remove('scrolled');
-        }
-    });
-
+    /**
+     * Converte uma string de valor (ex: "R$ 54,90") para um número float.
+     * @param {string} valueString - A string de valor.
+     * @returns {number} O valor numérico.
+     */
     function parseValue(valueString) {
         const cleanValue = valueString.replace('R$', '').replace(',', '.').trim();
         return parseFloat(cleanValue) || 0;
     }
 
-    // Função para guardar o carrinho no localStorage
+    /**
+     * Salva o estado atual do carrinho no Local Storage.
+     */
     function saveCart() {
         localStorage.setItem('dungaLanchesCart', JSON.stringify(cart));
     }
 
-    // Função para carregar o carrinho do localStorage
+    /**
+     * Carrega o carrinho do Local Storage, se existir.
+     * @returns {Array} O array de carrinho carregado.
+     */
     function loadCart() {
-        const storedCart = localStorage.getItem('dungaLanchesCart');
-        return storedCart ? JSON.parse(storedCart) : [];
+        try {
+            const storedCart = localStorage.getItem('dungaLanchesCart');
+            return storedCart ? JSON.parse(storedCart) : [];
+        } catch (e) {
+            console.error("Falha ao carregar o carrinho do Local Storage:", e);
+            return [];
+        }
     }
 
-    function createCard(item, category) {
-        const card = document.createElement('div');
-        card.className = 'card';
+    // --- Funções de Renderização e Lógica do Carrinho ---
 
-        const nome = item['Nome'] || item['Sabor'] || 'Item sem nome';
-        const descricao = item['Descrição'] || item['Ingredientes'] || '';
-        const valor = item['Valor'] || 'Preço não disponível';
-
-        let cardContent = `
-            <h3>${nome}</h3>
-            ${descricao ? `<p>${descricao}</p>` : ''}
-            <div class="valor">${valor}</div>
-            <button class="add-to-cart" data-category="${category}" data-item-name="${nome}" data-item-price="${valor}">Adicionar ao Carrinho</button>
-        `;
-
-        card.innerHTML = cardContent;
-        return card;
-    }
-
+    /**
+     * Atualiza o contador de itens no ícone do carrinho.
+     */
     function updateCartCounter() {
-        const cartCountSpan = document.getElementById('cart-count');
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
         cartCountSpan.textContent = totalItems;
     }
+    
+    /**
+     * Cria e adiciona um item do menu como um card na página.
+     * @param {Object} item - Objeto com os dados do item.
+     * @param {string} category - A categoria do item.
+     */
+    function createMenuCard(item, category) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const nome = item['Nome'] || 'Item sem nome';
+        const descricao = item['Ingredientes'] || '';
+        const valor = item['Valor'] || 'Preço não disponível';
+        card.innerHTML = `
+            <h3>${nome}</h3>
+            ${descricao ? `<p>${descricao}</p>` : ''}
+            <div class="valor">${valor}</div>
+            <button class="add-to-cart" data-item-name="${nome}" data-item-price="${valor}">Adicionar ao Carrinho</button>
+        `;
+        document.getElementById(`${category}-container`).appendChild(card);
+    }
+    
+    /**
+     * Renderiza o menu completo na página.
+     */
+    function renderMenu() {
+        for (const category in menuData) {
+            const data = menuData[category];
+            const container = document.getElementById(`${category}-container`);
+            container.innerHTML = ''; // Limpa o container antes de renderizar
+            data.forEach(item => createMenuCard(item, category));
+        }
+    }
 
+    /**
+     * Adiciona um item ao carrinho ou aumenta sua quantidade.
+     * @param {Object} itemToAdd - O item a ser adicionado.
+     */
+    function addItemToCart(itemToAdd) {
+        const existingItem = cart.find(cartItem => cartItem.name === itemToAdd.name);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({ ...itemToAdd, quantity: 1 });
+        }
+        updateCartDisplay();
+        saveCart();
+    }
+    
+    /**
+     * Remove um item completamente do carrinho.
+     * @param {string} itemName - O nome do item a ser removido.
+     */
+    function removeItemFromCart(itemName) {
+        cart = cart.filter(cartItem => cartItem.name !== itemName);
+        updateCartDisplay();
+        saveCart();
+    }
+    
+    /**
+     * Altera a quantidade de um item no carrinho.
+     * @param {string} itemName - O nome do item.
+     * @param {number} delta - A variação na quantidade (1 para aumentar, -1 para diminuir).
+     */
+    function changeItemQuantity(itemName, delta) {
+        const item = cart.find(cartItem => cartItem.name === itemName);
+        if (item) {
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                removeItemFromCart(itemName);
+            } else {
+                updateCartDisplay();
+            }
+            saveCart();
+        }
+    }
+
+    /**
+     * Renderiza o conteúdo do modal do carrinho.
+     */
     function updateCartDisplay() {
+        const subtotal = cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0);
+        
+        // --- Atualização de Totais e Opções de Frete ---
+        const selectedFreteOption = document.querySelector('input[name="frete-option"]:checked').value;
+        if (selectedFreteOption === 'entrega') {
+            freteMessageDiv.textContent = 'A distância máxima é de 5km. O seu endereço será verificado para a confirmação do valor e se estará dentro do nosso alcance, em seguida será enviado o valor do frete.';
+            freteMessageDiv.style.display = 'block';
+            customerAddressTextarea.required = true;
+            freteValue.textContent = 'A verificar...';
+        } else {
+            freteMessageDiv.style.display = 'none';
+            customerAddressTextarea.required = false;
+            freteValue.textContent = 'Grátis';
+        }
+
+        cartSubtotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        cartTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        updateCartCounter();
+
+        // --- Renderização dos Itens do Carrinho ---
         cartItemsContainer.innerHTML = '';
-
-        let subtotal = 0;
-
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<li>O seu carrinho está vazio.</li>';
         } else {
             cart.forEach(item => {
                 const valorNumerico = parseValue(item.price);
-                subtotal += valorNumerico * item.quantity;
-
                 const li = document.createElement('li');
                 li.innerHTML = `
                     <div class="item-info">
@@ -390,215 +477,162 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartItemsContainer.appendChild(li);
             });
         }
-
-        const selectedFreteOption = document.querySelector('input[name="frete-option"]:checked').value;
-        if (selectedFreteOption === 'entrega') {
-            freteMessageDiv.textContent = 'A distância máxima é de 5km. O seu endereço será verificado dentro de instantes para a confirmação do valor e se estará dentro do nosso alcance, em seguida será enviado o valor do frete.';
-            freteMessageDiv.style.display = 'block';
-            customerAddressTextarea.required = true;
-            freteValue.textContent = 'A verificar...';
-        } else {
-            freteMessageDiv.style.display = 'none';
-            customerAddressTextarea.required = false;
-            freteValue.textContent = 'Grátis';
-        }
-
-        cartSubtotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-        cartTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-
-        updateCartCounter();
     }
 
-    function addToCart(item) {
-        const existingItem = cart.find(cartItem => cartItem.name === item.name);
+    // --- Gerenciamento do Pedido e WhatsApp ---
 
-        if (existingItem) {
-            existingItem.quantity++;
-        } else {
-            cart.push({ ...item, quantity: 1 });
-        }
-        updateCartDisplay();
-        saveCart();
-    }
-
-    function increaseQuantity(itemName) {
-        const item = cart.find(cartItem => cartItem.name === itemName);
-        if (item) {
-            item.quantity++;
-            updateCartDisplay();
-            saveCart();
-        }
-    }
-
-    function decreaseQuantity(itemName) {
-        const item = cart.find(cartItem => cartItem.name === itemName);
-        if (item) {
-            item.quantity--;
-            if (item.quantity <= 0) {
-                removeItem(itemName);
-            } else {
-                updateCartDisplay();
-                saveCart();
-            }
-        }
-    }
-
-    function removeItem(itemName) {
-        cart = cart.filter(cartItem => cartItem.name !== itemName);
-        updateCartDisplay();
-        saveCart();
-    }
-
-    function clearCart() {
+    /**
+     * Limpa o carrinho e o formulário de pedido.
+     */
+    function resetOrder() {
         cart = [];
         orderForm.reset();
         document.querySelector('input[name="frete-option"][value="retirada"]').checked = true;
         document.querySelector('input[name="payment-method"][value="pix"]').checked = true;
         trocoField.classList.add('hidden');
         trocoValueInput.value = '';
-        updateCartDisplay();
         saveCart();
         cartModal.style.display = 'none';
     }
 
-    function generateOrderSummary(event) {
+    /**
+     * Gera a mensagem do pedido para o WhatsApp e envia.
+     * @param {Event} event - O evento de submissão do formulário.
+     */
+    function handleOrderSubmission(event) {
         event.preventDefault();
-
+        
         const customerName = document.getElementById('customer-name').value;
         const customerAddress = document.getElementById('customer-address').value;
         const freteOption = document.querySelector('input[name="frete-option"]:checked').value;
         const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
         const trocoValue = trocoValueInput.value;
 
+        // Validação básica
         if (cart.length === 0) {
-            alert('O seu carrinho está vazio! Adicione alguns itens antes de finalizar.');
+            alert('O seu carrinho está vazio! Adicione itens para continuar.');
             return;
         }
-        if (!customerName) {
-            alert('Por favor, preencha o seu nome.');
-            return;
-        }
-        if (freteOption === 'entrega' && !customerAddress) {
-            alert('Por favor, preencha o seu endereço para a entrega.');
-            return;
-        }
-        if (paymentMethod === 'dinheiro' && trocoValue && parseFloat(trocoValue.replace(',', '.')) < cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0)) {
-            alert('O valor do troco deve ser maior que o subtotal do pedido.');
+        if (!customerName || (freteOption === 'entrega' && !customerAddress)) {
+            alert('Por favor, preencha os campos obrigatórios para o pedido.');
             return;
         }
 
-        let subtotal = cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0);
         let summary = `Olá, gostaria de fazer o seguinte pedido:\n\n`;
         summary += `--- Itens do Pedido ---\n`;
         cart.forEach(item => {
             summary += `- ${item.name} (x${item.quantity}): ${item.price}\n`;
         });
+        
+        const subtotal = cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0);
         summary += `\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
-
+        
         if (freteOption === 'entrega') {
-            summary += `Frete: O valor será verificado após a confirmação do pedido.\n`;
-            summary += `Total: R$ ${subtotal.toFixed(2).replace('.', ',')} (O valor do frete será adicionado)\n\n`;
+            summary += `Frete: O valor será verificado.\n`;
         } else {
             summary += `Frete: Grátis (Retirada no Local)\n`;
-            summary += `Total: R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`;
         }
-
-        summary += `--- Pagamento ---\n`;
-        let paymentMethodText = '';
-        if (paymentMethod === 'pix') {
-            paymentMethodText = 'Pix';
-        } else if (paymentMethod === 'cartao') {
-            paymentMethodText = 'Cartão de Crédito/Débito';
-        } else {
-            paymentMethodText = `Dinheiro (Troco para R$ ${parseFloat(trocoValue || 0).toFixed(2).replace('.', ',')})`;
-        }
-        summary += `Forma de Pagamento: ${paymentMethodText}\n\n`;
-
-        summary += `--- Dados do Cliente ---\n`;
+        
+        summary += `Total: R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`;
+        
+        summary += `--- Dados do Cliente e Pagamento ---\n`;
         summary += `Nome: ${customerName}\n`;
         if (freteOption === 'entrega') {
-            summary += `Endereço: ${customerAddress}\n\n`;
-        } else {
-            summary += `Opção: Retirada no Local\n\n`;
+            summary += `Endereço: ${customerAddress}\n`;
         }
+        
+        let paymentMethodText = '';
+        if (paymentMethod === 'pix') paymentMethodText = 'Pix';
+        else if (paymentMethod === 'cartao') paymentMethodText = 'Cartão de Crédito/Débito';
+        else paymentMethodText = `Dinheiro (Troco para R$ ${parseFloat(trocoValue || 0).toFixed(2).replace('.', ',')})`;
+        summary += `Pagamento: ${paymentMethodText}\n\n`;
+        
         summary += `Obrigado!`;
 
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(summary)}`;
         window.open(whatsappUrl, '_blank');
-
-        setTimeout(clearCart, 1000);
+        
+        // Limpa o carrinho após um pequeno atraso para dar tempo ao WhatsApp de abrir
+        setTimeout(resetOrder, 1000);
     }
 
-    function loadMenu() {
-        cart = loadCart();
+    // --- Inicialização ---
 
-        for (const category in menuData) {
-            const data = menuData[category];
-            const container = document.getElementById(`${category}-container`);
-
-            container.innerHTML = '';
-            data.forEach(item => {
-                const card = createCard(item, category);
-                container.appendChild(card);
-            });
-        }
-
+    /**
+     * Define todos os listeners de eventos.
+     */
+    function setupEventListeners() {
+        // Evento para adicionar itens ao carrinho
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', (e) => {
                 const itemName = e.target.dataset.itemName;
                 const itemPrice = e.target.dataset.itemPrice;
-                addToCart({ name: itemName, price: itemPrice });
+                addItemToCart({ name: itemName, price: itemPrice });
             });
         });
 
-        orderForm.addEventListener('submit', generateOrderSummary);
-
-        cartIcon.addEventListener('click', () => {
+        // Eventos do Modal
+        cartIconContainer.addEventListener('click', () => {
             cartModal.style.display = 'block';
             updateCartDisplay();
         });
-
-        closeButton.addEventListener('click', () => {
-            cartModal.style.display = 'none';
-        });
-
+        closeButton.addEventListener('click', () => cartModal.style.display = 'none');
         window.addEventListener('click', (event) => {
             if (event.target === cartModal) {
                 cartModal.style.display = 'none';
             }
         });
-
-        freteOptions.forEach(radio => {
-            radio.addEventListener('change', updateCartDisplay);
-        });
-
+        
+        // Eventos de Opções do Pedido
+        freteOptions.forEach(radio => radio.addEventListener('change', updateCartDisplay));
         paymentMethods.forEach(radio => {
             radio.addEventListener('change', (e) => {
                 if (e.target.value === 'dinheiro') {
                     trocoField.classList.remove('hidden');
-                    trocoValueInput.required = true;
                 } else {
                     trocoField.classList.add('hidden');
-                    trocoValueInput.required = false;
                 }
             });
         });
-
+        
+        // Evento do formulário
+        orderForm.addEventListener('submit', handleOrderSubmission);
+        
+        // Delegação de eventos para o carrinho (melhor performance)
         cartItemsContainer.addEventListener('click', (e) => {
-            const button = e.target;
+            const button = e.target.closest('button');
+            if (!button) return; // Se o clique não foi em um botão
             const itemName = button.dataset.itemName;
-
+            
             if (button.classList.contains('increase-quantity')) {
-                increaseQuantity(itemName);
+                changeItemQuantity(itemName, 1);
             } else if (button.classList.contains('decrease-quantity')) {
-                decreaseQuantity(itemName);
+                changeItemQuantity(itemName, -1);
             } else if (button.classList.contains('remove-item')) {
-                removeItem(itemName);
+                removeItemFromCart(itemName);
             }
         });
 
-        updateCartDisplay();
+        // Efeito de scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > headerHeight) {
+                cartIconContainer.classList.add('scrolled');
+            } else {
+                cartIconContainer.classList.remove('scrolled');
+            }
+        });
     }
 
-    loadMenu();
+    /**
+     * Ponto de entrada da aplicação.
+     */
+    function init() {
+        cart = loadCart();
+        renderMenu();
+        setupEventListeners();
+        updateCartDisplay();
+    }
+    
+    // Inicia a aplicação
+    init();
 });
