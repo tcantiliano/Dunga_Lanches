@@ -313,17 +313,17 @@ section {
 }
 
 .remove-item {
-    background-color: var(--primary-color) !important;
-    color: white !important;
-    border: none !important;
+    background-color: var(--primary-color); /* Removido o !important */
+    color: white; /* Removido o !important */
+    border: none; /* Removido o !important */
     font-size: 0.8rem;
-    padding: 4px 8px !important;
+    padding: 4px 8px;
     margin-left: 10px;
     transition: background-color 0.2s, transform 0.1s;
 }
 
 .remove-item:hover {
-    background-color: #b2070c !important;
+    background-color: #b2070c; /* Removido o !important */
     transform: scale(1.1);
 }
 

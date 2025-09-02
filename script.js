@@ -305,11 +305,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
     const trocoField = document.getElementById('troco-field');
     const trocoValueInput = document.getElementById('troco-value');
-    
+
     // Altura do cabeçalho para o evento de scroll
     const headerElement = document.querySelector('header');
     let headerHeight = headerElement ? headerElement.offsetHeight : 50;
-    
+
     // Carrinho global
     let cart = [];
 
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
         cartCountSpan.textContent = totalItems;
     }
-    
+
     /**
      * Cria e adiciona um item do menu como um card na página.
      * @param {Object} item - Objeto com os dados do item.
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.getElementById(`${category}-container`).appendChild(card);
     }
-    
+
     /**
      * Renderiza o menu completo na página.
      */
@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartDisplay();
         saveCart();
     }
-    
+
     /**
      * Remove um item completamente do carrinho.
      * @param {string} itemName - O nome do item a ser removido.
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartDisplay();
         saveCart();
     }
-    
+
     /**
      * Altera a quantidade de um item no carrinho.
      * @param {string} itemName - O nome do item.
@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function updateCartDisplay() {
         const subtotal = cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0);
-        
+
         // --- Atualização de Totais e Opções de Frete ---
         const selectedFreteOption = document.querySelector('input[name="frete-option"]:checked').value;
         if (selectedFreteOption === 'entrega') {
@@ -501,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function handleOrderSubmission(event) {
         event.preventDefault();
-        
+
         const customerName = document.getElementById('customer-name').value;
         const customerAddress = document.getElementById('customer-address').value;
         const freteOption = document.querySelector('input[name="frete-option"]:checked').value;
@@ -513,8 +513,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('O seu carrinho está vazio! Adicione itens para continuar.');
             return;
         }
-        if (!customerName || (freteOption === 'entrega' && !customerAddress)) {
-            alert('Por favor, preencha os campos obrigatórios para o pedido.');
+
+        // Removida a verificação JavaScript do endereço, pois o 'required' do HTML já cuida disso.
+        if (!customerName) {
+            alert('Por favor, preencha seu nome para o pedido.');
             return;
         }
 
@@ -523,35 +525,35 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.forEach(item => {
             summary += `- ${item.name} (x${item.quantity}): ${item.price}\n`;
         });
-        
+
         const subtotal = cart.reduce((sum, item) => sum + (parseValue(item.price) * item.quantity), 0);
         summary += `\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
-        
+
         if (freteOption === 'entrega') {
             summary += `Frete: O valor será verificado.\n`;
         } else {
             summary += `Frete: Grátis (Retirada no Local)\n`;
         }
-        
+
         summary += `Total: R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`;
-        
+
         summary += `--- Dados do Cliente e Pagamento ---\n`;
         summary += `Nome: ${customerName}\n`;
         if (freteOption === 'entrega') {
             summary += `Endereço: ${customerAddress}\n`;
         }
-        
+
         let paymentMethodText = '';
         if (paymentMethod === 'pix') paymentMethodText = 'Pix';
         else if (paymentMethod === 'cartao') paymentMethodText = 'Cartão de Crédito/Débito';
         else paymentMethodText = `Dinheiro (Troco para R$ ${parseFloat(trocoValue || 0).toFixed(2).replace('.', ',')})`;
         summary += `Pagamento: ${paymentMethodText}\n\n`;
-        
+
         summary += `Obrigado!`;
 
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(summary)}`;
         window.open(whatsappUrl, '_blank');
-        
+
         // Limpa o carrinho após um pequeno atraso para dar tempo ao WhatsApp de abrir
         setTimeout(resetOrder, 1000);
     }
@@ -582,7 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartModal.style.display = 'none';
             }
         });
-        
+
         // Eventos de Opções do Pedido
         freteOptions.forEach(radio => radio.addEventListener('change', updateCartDisplay));
         paymentMethods.forEach(radio => {
@@ -594,16 +596,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-        
+
         // Evento do formulário
         orderForm.addEventListener('submit', handleOrderSubmission);
-        
+
         // Delegação de eventos para o carrinho (melhor performance)
         cartItemsContainer.addEventListener('click', (e) => {
             const button = e.target.closest('button');
             if (!button) return; // Se o clique não foi em um botão
             const itemName = button.dataset.itemName;
-            
+
             if (button.classList.contains('increase-quantity')) {
                 changeItemQuantity(itemName, 1);
             } else if (button.classList.contains('decrease-quantity')) {
@@ -632,7 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupEventListeners();
         updateCartDisplay();
     }
-    
+
     // Inicia a aplicação
     init();
 });
