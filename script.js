@@ -2,293 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Definição de constantes e dados do menu
     const WHATSAPP_NUMBER = "5511982787268";
 
-    const menuData = {
-        'beirutes': [
-            {
-                "Nome": "Frango - Grande",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
-                "Valor": "R$ 54,90"
-            },
-            {
-                "Nome": "Frango - Pequeno",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
-                "Valor": "R$ 41,00"
-            },
-            {
-                "Nome": "Carne - Grande",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
-                "Valor": "R$ 68,90"
-            },
-            {
-                "Nome": "Carne - Pequeno",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
-                "Valor": "R$ 51,90"
-            },
-            {
-                "Nome": "Calabresa - Grande",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
-                "Valor": "R$ 64,90"
-            },
-            {
-                "Nome": "Calabresa - Pequeno",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
-                "Valor": "R$ 48,90"
-            },
-            {
-                "Nome": "Peito de Peru - Grande",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
-                "Valor": "R$ 65,90"
-            },
-            {
-                "Nome": "Peito de Peru - Pequeno",
-                "Ingredientes": "mussarela, maionese, alface, tomate e orégano",
-                "Valor": "R$ 49,90"
-            },
-            {
-                "Nome": "Portuguesa - Grande",
-                "Ingredientes": "mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
-                "Valor": "R$ 51,90"
-            },
-            {
-                "Nome": "Portuguesa - Pequeno",
-                "Ingredientes": "mussarela, presunto, cebola, ovo, maionese, alface, tomate e orégano",
-                "Valor": "R$ 39,90"
-            }
-        ],
-        'porcoes': [
-            {
-                "Nome": "Frango a Passarinho com Fritas - Grande",
-                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas",
-                "Valor": "R$ 54,90"
-            },
-            {
-                "Nome": "Frango a Passarinho com Fritas - Pequena",
-                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas",
-                "Valor": "R$ 34,90"
-            },
-            {
-                "Nome": "Frango a Passarinho com Fritas Cheddar e Bacon - Grande",
-                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, cheddar e bacon",
-                "Valor": "R$ 64,90"
-            },
-            {
-                "Nome": "Frango a Passarinho com Fritas Cheddar e Bacon - Pequena",
-                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, cheddar e bacon",
-                "Valor": "R$ 44,90"
-            },
-            {
-                "Nome": "Frango a Passarinho com Fritas e Mandioca - Grande",
-                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas e mandioca",
-                "Valor": "R$ 67,90"
-            },
-            {
-                "Nome": "Frango a Passarinho com Fritas e Mandioca - Pequena",
-                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, mandioca, cheddar e bacon",
-                "Valor": "R$ 39,90"
-            },
-            {
-                "Nome": "Frango a Passarinho com Fritas e Mandioca Cheddar e Bacon - Grande",
-                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas e mandioca",
-                "Valor": "R$ 81,90"
-            },
-            {
-                "Nome": "Frango a Passarinho com Fritas e Mandioca Cheddar e Bacon - Pequena",
-                "Ingredientes": "frango temperado é empadano na hora acompanhado de fritas, mandioca, cheddar e bacon",
-                "Valor": "R$ 49,90"
-            },
-            {
-                "Nome": "Carne Seca Acebolada com Mandioca",
-                "Ingredientes": "carne seca, cebola e mandioca",
-                "Valor": "R$ 67,90"
-            },
-            {
-                "Nome": "Carne Seca Acebolada com Mandioca e Queijo Coalho",
-                "Ingredientes": "carne seca, cebola, mandioca e queijo coalho",
-                "Valor": "R$ 84,90"
-            },
-            {
-                "Nome": "Porção de Fritas - Grande",
-                "Ingredientes": "batata frita na caixa de brotinho",
-                "Valor": "R$ 28,90"
-            },
-            {
-                "Nome": "Porção de Fritas - Pequena",
-                "Ingredientes": "batata frita, cheddar e bacon",
-                "Valor": "R$ 14,90"
-            },
-            {
-                "Nome": "Porção de Fritas com Cheddar e Bacon - Grande",
-                "Ingredientes": "batata frita na caixa de brotinho",
-                "Valor": "R$ 38,90"
-            },
-            {
-                "Nome": "Porção de Fritas com Cheddar e Bacon - Pequena",
-                "Ingredientes": "batata frita, cheddar e bacon",
-                "Valor": "R$ 21,90"
-            },
-            {
-                "Nome": "Isca de Peixe - Grande",
-                "Ingredientes": "isca de peixe",
-                "Valor": "R$ 54,90"
-            }
-        ],
-        'pizzas': [
-            {
-                "Nome": "Calabresa",
-                "Ingredientes": "mussarela e cebola",
-                "Valor": "R$ 39,90"
-            },
-            {
-                "Nome": "Mussarela",
-                "Ingredientes": "mussarela, orégano e azeitona",
-                "Valor": "R$ 38,90"
-            },
-            {
-                "Nome": "Toscana",
-                "Ingredientes": "calabresa, mussarela, cebola e azeitona",
-                "Valor": "R$ 46,90"
-            },
-            {
-                "Nome": "Brócolis",
-                "Ingredientes": "mussarela, alho e azeitona",
-                "Valor": "R$ 41,90"
-            },
-            {
-                "Nome": "Palmito",
-                "Ingredientes": "mussarela, catupiry e azeitona",
-                "Valor": "R$ 48,90"
-            },
-            {
-                "Nome": "Atum",
-                "Ingredientes": "cebola ou com mussarela, azeitona",
-                "Valor": "R$ 49,90"
-            },
-            {
-                "Nome": "Bauru",
-                "Ingredientes": "tomate, mussarela e azeitona",
-                "Valor": "R$ 41,90"
-            },
-            {
-                "Nome": "Escarola",
-                "Ingredientes": "bacon, mussarela e azeitona",
-                "Valor": "R$ 41,90"
-            },
-            {
-                "Nome": "Bacon",
-                "Ingredientes": "mussarela e azeitona",
-                "Valor": "R$ 49,90"
-            },
-            {
-                "Nome": "Baiana",
-                "Ingredientes": "calabresa moida, pimenta, mussarela e azeitona",
-                "Valor": "R$ 41,90"
-            },
-            {
-                "Nome": "Dois Queijos",
-                "Ingredientes": "mussarela, catupiry, tomate e azeitona",
-                "Valor": "R$ 46,90"
-            },
-            {
-                "Nome": "Três Queijos",
-                "Ingredientes": "mussarela, provolone, parmesão e azeitona",
-                "Valor": "R$ 50,90"
-            },
-            {
-                "Nome": "Quatro Queijos",
-                "Ingredientes": "mussarela, gorgonzola, provolone, parmesão e azeitona",
-                "Valor": "R$ 51,90"
-            },
-            {
-                "Nome": "Napolitana",
-                "Ingredientes": "mussarela, tomate e azeitona",
-                "Valor": "R$ 41,90"
-            },
-            {
-                "Nome": "Portuguesa",
-                "Ingredientes": "mussarela, presunto, ovo, cebola e azeitona",
-                "Valor": "R$ 47,90"
-            },
-            {
-                "Nome": "Frango com Catupiry",
-                "Ingredientes": "frango ralado, catupiry e azeitona",
-                "Valor": "R$ 47,90"
-            },
-            {
-                "Nome": "Lombo",
-                "Ingredientes": "mussarela ou catupiry, cebola e azeitona",
-                "Valor": "R$ 50,90"
-            },
-            {
-                "Nome": "Carne seca",
-                "Ingredientes": "mussarela e azeitona",
-                "Valor": "R$ 50,90"
-            },
-            {
-                "Nome": "Alho",
-                "Ingredientes": "mussarela, alho e azeitona",
-                "Valor": "R$ 41,90"
-            }
-        ],
-        'lanches': [
-            {
-                "Nome": "X-Frango Grelhado",
-                "Ingredientes": "hambúrguer de frango grelhado, queijo, salada e maionese",
-                "Valor": "R$ 19,90"
-            },
-            {
-                "Nome": "X-Peito de Peru",
-                "Ingredientes": "pão, peito de peru, queijo, salada e maionese",
-                "Valor": "R$ 20,90"
-            },
-            {
-                "Nome": "X-Salada",
-                "Ingredientes": "hambúrguer, queijo, salada e maionese",
-                "Valor": "R$ 16,90"
-            },
-            {
-                "Nome": "X-Bacon",
-                "Ingredientes": "hambúrguer, queijo, bacon, salada e maionese",
-                "Valor": "R$ 17,90"
-            },
-            {
-                "Nome": "X-Contra File",
-                "Ingredientes": "contra filé, queijo, salada e maionese",
-                "Valor": "R$ 21,90"
-            },
-            {
-                "Nome": "X-Egg",
-                "Ingredientes": "hambúrguer, queijo, ovo, salada e maionese",
-                "Valor": "R$ 17,90"
-            },
-            {
-                "Nome": "X-Presunto",
-                "Ingredientes": "hambúrguer, queijo, presunto, salada e maionese",
-                "Valor": "R$ 18,90"
-            },
-            {
-                "Nome": "Bauru",
-                "Ingredientes": "presunto, queijo, tomate e orégano",
-                "Valor": "R$ 14,90"
-            },
-            {
-                "Nome": "Misto Quente",
-                "Ingredientes": "pão, presunto e queijo",
-                "Valor": "R$ 12,90"
-            }
-        ],
-        'bebidas': [
-            {
-                "Nome": "Refrigerante lata",
-                "Ingredientes": "",
-                "Valor": "R$ 6,00"
-            },
-            {
-                "Nome": "Suco de Laranja Natural",
-                "Ingredientes": "",
-                "Valor": "R$ 8,00"
-            }
-        ]
-    };
+    // Removida a variável menuData, pois agora ela será carregada do arquivo JSON.
+    let menuData;
 
     const cartModal = document.getElementById('cart-modal');
     const closeButton = document.querySelector('.close-button');
@@ -514,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Removida a verificação JavaScript do endereço, pois o 'required' do HTML já cuida disso.
         if (!customerName) {
             alert('Por favor, preencha seu nome para o pedido.');
             return;
@@ -628,11 +342,21 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Ponto de entrada da aplicação.
      */
-    function init() {
-        cart = loadCart();
-        renderMenu();
-        setupEventListeners();
-        updateCartDisplay();
+    async function init() {
+        try {
+            const response = await fetch('menu.json');
+            if (!response.ok) {
+                throw new Error('Falha ao carregar o menu. Status: ' + response.status);
+            }
+            menuData = await response.json();
+            cart = loadCart();
+            renderMenu();
+            setupEventListeners();
+            updateCartDisplay();
+        } catch (error) {
+            console.error('Erro ao inicializar a aplicação:', error);
+            document.querySelector('main').innerHTML = '<p style="text-align: center; color: red;">Não foi possível carregar o menu. Por favor, tente novamente mais tarde.</p>';
+        }
     }
 
     // Inicia a aplicação
