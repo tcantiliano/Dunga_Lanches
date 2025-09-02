@@ -272,7 +272,7 @@
             "Valor": "R$ 12,90"
         }
     ],
-    "bebidas": [
+"bebidas": [
         {
             "Nome": "Refrigerante lata",
             "Ingredientes": "",
@@ -282,6 +282,18 @@
             "Nome": "Suco de Laranja Natural",
             "Ingredientes": "",
             "Valor": "R$ 8,00"
+        }
+    ],
+    "combos": [
+        {
+            "Nome": "Combo 1: X-Salada + Fritas",
+            "Ingredientes": "X-Salada e porção de fritas pequena",
+            "Valor": "R$ 29,90"
+        },
+        {
+            "Nome": "Combo 2: Calabresa + Coca-Cola",
+            "Ingredientes": "Pizza de Calabresa e 1 refrigerante lata",
+            "Valor": "R$ 44,90"
         }
     ]
 }
