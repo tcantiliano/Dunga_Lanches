@@ -30,6 +30,7 @@ body {
 
 html {
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -66,7 +67,6 @@ header {
     text-align: center;
     padding: 1rem 0;
     box-shadow: var(--shadow);
-    /* Removido: 'position: relative;' e 'z-index: 999;' que não são necessários aqui */
 }
 
 main {
@@ -313,9 +313,9 @@ section {
 }
 
 .remove-item {
-    background-color: var(--primary-color); /* Removido o !important */
-    color: white; /* Removido o !important */
-    border: none; /* Removido o !important */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
     font-size: 0.8rem;
     padding: 4px 8px;
     margin-left: 10px;
@@ -323,7 +323,7 @@ section {
 }
 
 .remove-item:hover {
-    background-color: #b2070c; /* Removido o !important */
+    background-color: #b2070c;
     transform: scale(1.1);
 }
 
@@ -369,4 +369,13 @@ section {
 
 #checkout-button:active {
     transform: translateY(0);
+}
+
+/* ======================== */
+/* 6. Utilitários e Efeitos */
+/* ======================== */
+
+/* Scroll Suave */
+html {
+    scroll-behavior: smooth;
 }

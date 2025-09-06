@@ -272,7 +272,7 @@
             "Valor": "R$ 12,90"
         }
     ],
-"bebidas": [
+    "bebidas": [
         {
             "Nome": "Refrigerante lata",
             "Ingredientes": "",
@@ -286,14 +286,91 @@
     ],
     "combos": [
         {
-            "Nome": "Combo 1: X-Salada + Fritas",
-            "Ingredientes": "X-Salada e porção de fritas pequena",
+            "Nome": "X-Frango Grelhado",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 31,90"
+        },
+        {
+            "Nome": "X-Peito de peru",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 32,90"
+        },
+        {
+            "Nome": "X-Salada",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 28,90"
+        },
+        {
+            "Nome": "X-Bacon",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
             "Valor": "R$ 29,90"
         },
         {
-            "Nome": "Combo 2: Calabresa + Coca-Cola",
-            "Ingredientes": "Pizza de Calabresa e 1 refrigerante lata",
-            "Valor": "R$ 44,90"
+            "Nome": "X-Contra filé",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 32,90"
+        },
+        {
+            "Nome": "X-Egg",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 27,90"
+        },
+        {
+            "Nome": "X-Presunto",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 31,90"
+        },
+        {
+            "Nome": "Bauru",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 26,90"
+        },
+        {
+            "Nome": "Misto quente",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 22,90"
+        },
+        {
+            "Nome": "Frango a Passarinho",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 42,90"
+        },
+        {
+            "Nome": "Carne Seca",
+            "Ingredientes": "Fritas e um refrigerante Coca-Cola 220ml",
+            "Valor": "R$ 75,90"
+        }
+    ],
+    "adicionais": [
+        {
+            "Nome": "Ovos (cada)",
+            "Ingredientes": "",
+            "Valor": "R$ 1,90"
+        },
+        {
+            "Nome": "Catupiry",
+            "Ingredientes": "",
+            "Valor": "R$ 8,90"
+        },
+        {
+            "Nome": "Cheddar",
+            "Ingredientes": "",
+            "Valor": "R$ 6,90"
+        },
+        {
+            "Nome": "Molho tártaro",
+            "Ingredientes": "",
+            "Valor": "R$ 5,90"
+        },
+        {
+            "Nome": "Bacon lanches e 1/2 pizzas",
+            "Ingredientes": "",
+            "Valor": "R$ 6,90"
+        },
+        {
+            "Nome": "Bacon porções e pizzas",
+            "Ingredientes": "",
+            "Valor": "R$ 9,90"
         }
     ]
 }
