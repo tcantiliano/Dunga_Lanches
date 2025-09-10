@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Definição de constantes e dados do menu
-    const WHATSAPP_NUMBER = "5511982787268";
+    const WHATSAPP_NUMBER = "99999999999";
 
     // Removida a variável menuData, pois agora ela será carregada do arquivo JSON.
     let menuData;
