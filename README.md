@@ -12,6 +12,24 @@ Este repositório tem como objetivo servir de ambiente para testes de configura�
 - **CSS** (27.5%)
 - **HTML** (17.6%)
 
+## Descrição do projeto
+
+O Dunga_Lanches é um sistema desenvolvido para otimizar o gerenciamento de lanchonetes, food trucks ou estabelecimentos similares, proporcionando uma solução eficiente para o registro e acompanhamento de pedidos. O sistema tem como foco simplificar processos operacionais, promover um atendimento ágil ao cliente e facilitar o controle de vendas.
+
+Principais funcionalidades:
+
+Cadastro e gerenciamento de produtos do cardápio (lanches, bebidas, adicionais, etc.)
+Registro e acompanhamento de pedidos em tempo real
+Controle de status dos pedidos (em preparação, pronto, entregue)
+Gestão de clientes e histórico de compras
+Relatórios de vendas e desempenho do estabelecimento
+Interface amigável para fácil utilização por funcionários e administradores
+Objetivo:
+
+O objetivo do Dunga_Lanches é oferecer uma plataforma intuitiva e completa, capaz de centralizar as informações do negócio e contribuir para a tomada de decisões estratégicas, melhorando a experiência tanto do cliente quanto dos colaboradores.
+
+Se desejar, posso adaptar o texto para um formato ainda mais detalhado ou resumido, conforme sua necessidade!
+
 ## Como usar
 
 Clone o repositório:
