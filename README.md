@@ -1,4 +1,4 @@
-# Dunga Lanches
+# Otimizar o Gerenciamento de Lanchonetes
 
 Será para teste de configurações.
 
